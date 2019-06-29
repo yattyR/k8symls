@@ -60,7 +60,6 @@ spec:
           volumeMounts:
           - name: usrlog
             mountPath: /usr/share/log
-          volumeMounts:
           - name: varlog
             mountPath: /var/log
         - name: count-agent-app
@@ -69,7 +68,6 @@ spec:
           volumeMounts:
           - name: usrlog
             mountPath: /usr/share/log
-          volumeMounts:
           - name: varlog
             mountPath: /var/log
         - name: count-agent-root
@@ -78,18 +76,18 @@ spec:
           - name: FLUENTD_ARGS
             value: -c /etc/fluentd-config/fluentd.conf
           volumeMounts:
-          - name: varlog
-            mountPath: /var/log
           - name: usrlog
             mountPath: /usr/share/log
           - name: config-volume
             mountPath: /etc/fluentd-config
+          - name: varlog
+            mountPath: /var/log
       volumes:
       - name: usrlog
         persistentVolumeClaim:
           claimName: kayak-pv-claim
-      - name: varlog
-        emptyDir: {}
       - name: config-volume
         configMap:
           name: fluentd-config
+      - name: varlog
+        emptyDir: {}
