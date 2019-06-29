@@ -1,3 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+data:
+  fluentd.conf: |
+    <source>
+      type tail
+      format none
+      path /usr/share/log/root.log
+      pos_file /usr/share/log/root.log.pos
+      tag kayak-app.format1
+    </source>
+
+
+    <match **>
+      type google_cloud
+    </match>
+---
 apiVersion: v1  
 kind: Service  
 metadata:  
@@ -25,7 +44,7 @@ spec:
     spec:  
       containers:  
         - name: kayak-app  
-          image: gcr.io/spring-boot-gke-244822/kayak-app:1.0
+          image: gcr.io/spring-boot-gke-244822/kayak-app:1.1
           imagePullPolicy: IfNotPresent  
           env:  
             - name: MONGODB_HOST  
@@ -39,15 +58,38 @@ spec:
             initialDelaySeconds: 5  
             periodSeconds: 5
           volumeMounts:
-          - name: varlog
+          - name: usrlog
             mountPath: /usr/share/log
-        - name: count-agent
-          image: busybox
-          args: [/bin/sh, -c, 'tail -n+1 -f /usr/share/log/root.log']
           volumeMounts:
           - name: varlog
+            mountPath: /var/log
+        - name: count-agent-app
+          image: busybox
+          args: [/bin/sh, -c, 'tail -n+1 -f /usr/share/log/kayak.log']
+          volumeMounts:
+          - name: usrlog
             mountPath: /usr/share/log
+          volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+        - name: count-agent-root
+          image: k8s.gcr.io/fluentd-gcp:1.30
+          env:
+          - name: FLUENTD_ARGS
+            value: -c /etc/fluentd-config/fluentd.conf
+          volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+          - name: usrlog
+            mountPath: /usr/share/log
+          - name: config-volume
+            mountPath: /etc/fluentd-config
       volumes:
-      - name: varlog
+      - name: usrlog
         persistentVolumeClaim:
           claimName: kayak-pv-claim
+      - name: varlog
+        emptyDir: {}
+      - name: config-volume
+        configMap:
+          name: fluentd-config
