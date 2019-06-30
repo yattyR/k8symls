@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: kayak-pv-claim
 spec:
-  storageClassName: standard
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
