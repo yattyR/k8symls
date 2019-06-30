@@ -84,8 +84,7 @@ spec:
             mountPath: /var/log
       volumes:
       - name: usrlog
-        persistentVolumeClaim:
-          claimName: kayak-pv-claim1
+        emptyDir: {}
       - name: config-volume
         configMap:
           name: fluentd-config
