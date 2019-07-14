@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: kayak-pv-claim1
+  name: kayak-pv-claim2
 spec:
   storageClassName: manual
   accessModes:

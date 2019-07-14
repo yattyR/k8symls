@@ -44,7 +44,7 @@ spec:
     spec:  
       containers:  
         - name: kayak-app  
-          image: gcr.io/spring-boot-gke-244822/kayak-app:1.1
+          image: gcr.io/spring-boot-gke-244822/kayak-app:1.4
           imagePullPolicy: IfNotPresent  
           env:  
             - name: MONGODB_HOST  
@@ -85,7 +85,7 @@ spec:
       volumes:
       - name: usrlog
         persistentVolumeClaim:
-          claimName: kayak-pv-claim1
+          claimName: kayak-pv-claim2
       - name: config-volume
         configMap:
           name: fluentd-config

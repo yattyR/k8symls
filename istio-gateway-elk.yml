@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1alpha3  
 kind: Gateway  
 metadata:  
-  name: kayak-gateway  
+  name: elk-gateway  
 spec:  
   selector:  
     istio: ingressgateway # use Istio default gateway implementation  
   servers:  
   - port:  
       name: http  
-      number: 80  
+      number: 81  
       protocol: HTTP  
     hosts:  
     - '*'  
@@ -16,12 +16,12 @@ spec:
 apiVersion: networking.istio.io/v1alpha3  
 kind: VirtualService  
 metadata:  
-  name: kayak-service 
+  name: elasticsearch 
 spec:  
   hosts:  
   - "*"  
   gateways:  
-  - kayak-gateway  
+  - elk-gateway
   http:  
   - match:  
     - uri:  
@@ -29,5 +29,5 @@ spec:
     route:  
     - destination:  
         port:  
-          number: 8000  
-        host: kayak-service
+          number: 9200  
+        host: elasticsearch

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+data:
+  logstash.conf: |
+    input {
+       tcp {
+         port => 9999
+         # codec => line
+         codec => "json"
+           }
+          }
+
+       filter {
+          kv {
+          source => "message"
+           recursive => "true"
+      }
+     }
+
+      output {
+    elasticsearch {
+        hosts => "elasticsearch:9200"
+        }
+        }
