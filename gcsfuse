@@ -1,0 +1,3 @@
+yatharth_raizada2909@cloudshell:~/gcs-fuse-sample (spring-boot-gke-244822)$ gcsfuse --debug_gcs --debug_fuse --key-file /root/spring-boot-gke-244822-7eedb4e805d2.json --implicit-dirs --dir-mode=775
+gcsfuse takes exactly two arguments. Run `gcsfuse --help` for more info.
+yatharth_raizada2909@cloudshell:~/gcs-fuse-sample (spring-boot-gke-244822)$  --file-mode=775 -o allow_other  log-archival-spring-boot-gke  /tmp/bucket

@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gcsfuse-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gcsfuse-test
+    spec:
+      containers:
+        - name: gcsfuse-test
+          image: gcr.io/spring-boot-gke-244822/gcs-fuse:1.0
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN
+          lifecycle:
+            postStart:
+              exec:
+                command: 
+                   - "sh"
+                   - "-c"
+                   - >
+                     gcsfuse --key-file /etc/arch/conf/arch.json -o nonempty log-archival-spring-boot-gke /var;
+                     cp /usr/share/log/* /var/ 
+            preStop:
+              exec:
+                command: ["fusermount", "-u", "/mnt/some-bucket"]
+          volumeMounts:
+          - name: usrlog
+            mountPath: /usr/share/log
+          - mountPath: /etc/arch/conf
+            name: arch-volume
+      volumes:
+      - name: arch-volume
+        configMap:
+          name: arch-config
+      - name: usrlog
+        persistentVolumeClaim:
+           claimName: kayak-pv-claim2

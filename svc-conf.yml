@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arch-config
+data:
+  arch.json: |
+          {
+           "type": "service_account",
+           "project_id": "spring-boot-gke-244822",
+           "private_key_id": "7eedb4e805d2504638014dcf4444c2705f52dfee",
+                       "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCEZiF/DrwD59Ws\nVLuIKtAVMnGIlpoOCed3JT4T3vUxVGFX1+ZFlZeYPY6f0xla0JunI1j+4woNifke\nEnyXtG+EWZ8VyK/7NT8bI6tuelsw727ngcCEZgt4hEjFDDO9pFJu3HWhwbKHqWWJ\niODqrDecW2Zmp/ThUd1wPk421HP/I622udXUpDql2tKJfFxDVIyEBmuGxTvAyFBN\n/UN2i0HiDUpUkf2pzjkjSiLWj3cV0yIH6rUSp7idrASHWCA2vmy/i4s8hsdqpVVy\nhtWpsb4vQH4wdb+qI8i99N5ehU/80fViz0DebYf0mzcwrMuUJAiWERD+zN32DSKI\ntBPJ539rAgMBAAECggEAASlFwSMhJWxsUVcE6T+gesi24JqbJOUtV7wtFgHuM83C\nDmhhJ3PibbFmHzy78jH2Me17cFdDCIKQ4fsJ7YKybH5X70CTwPSvzJsjFWFfv2Dt\nbHzIC+E617nBSzxW9jwLHqT/jlJwMGrQVMTgkO5Y81DrgWb9UAsAK2XaGPac3Dxl\nC03zo40lpf6bIxmvGW24c/ei1RD8vXMnc/zGE/2ixaChI0g2k1x+y8lfWBxXVkvg\n2pe0gFcjVaMonnt1n+Q4NHxVUQVXanq1Gt22DN+XGjA5/NJ/IWc9butX0nTItxI0\niE2786WdMGQKAtuC/arTUFpS6PffZmK44dJnlKp4oQKBgQC4ipg1jvJHQVQ25Nzg\nZbg0QKFGGZlerFkV3icAEL6XyWbTBRv5jHM7EkTJMhrTUR1+4g4Ps3j4Oo74YiqA\n9/dkut3LZ9Lu8iSyX9EJOARYUaNDfBP4UOLT2TLMUDRjG0l9WbC/QFfvI8Pyh5XP\njowsCjRLaBgNneVcPmFXkWMAqQKBgQC3qrU/ZwPmPFQ45rTzcUmO6nWJO7nvPAfb\nJzq1yPpJgupbM8fZjGZS6wAJWWq7LaHiiY3zjxZPztognTcxy2gI84PLV4bviB/o\nvbnYHqRSuWR/5M0Ln9BZp6neTdLPBDfxqbDUu36CuSJyOT8isIUTP2tw7UtdJSZ/\nUqhVqidH8wKBgA/jxyVdcJkYE/NCE46y04CUTA6oJ5+SQX1zinIj/vU830CuQPFk\n2YstkISubsbhRiPlvQY3EuR0zliuwzAlqcSfnndkMjJm4SgGvg4IJ7+fD+rApUuN\nU2qgWhJjmY8rC1HixihBlxC9SKL6b7jWclVcb5JKnT+W5+fgaytKFnc5AoGAU8IO\nu+Y/ufxjMDvN44MTV5CGn1nUdkw7DO877/DCa0m/lG3twsErXL78mkbjzI6H1+aB\nDMSBGU4s3Vi09glb3VEoFlBJIe1DGAGFwhBfQbZ4JXbzJ0zvWCOE7PMyouO6m4OW\nN711eSnykoKWzzwOw/NVDP+6MbUidEf+qmpZVY8CgYEAjaNLefo78Ln9r+nzuNB1\nKVRp4RmubSMLAYKBXDbqCefkJzeQnS/PJ9ELX+ezNXalBWz8qddW+kbn9JdJ4AVp\nMZOOpuR9vUZqHuim/EU9WctXHwAfYVqhkS31bSi+MgqkqKu5aG+04crfYZVMiBA4\nwQTYs9QBGiJYEPFknAB2Amk=\n-----END PRIVATE KEY-----\n",
+            "client_email": "svc-test@spring-boot-gke-244822.iam.gserviceaccount.com",
+           "client_id": "100879337488659331928",
+           "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+           "token_uri": "https://oauth2.googleapis.com/token",
+           "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+           "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/svc-test%40spring-boot-gke-244822.iam.gserviceaccount.com"
+          }
